@@ -1,0 +1,25 @@
+﻿@model varlikHesaplama.Models.kurSignalR
+
+<h2>Kur Bilgileri</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Döviz Cinsi</th>
+            <th>Kur Bilgisi (TRY) Oranı</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ABD Doları (USD)</td>
+            <td>@Model.CentralBankExchangeRate</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul id="list"></ul>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.18/signalr.min.js"></script>
+    <script src="~/js/exchangeRates.js"></script>
+}

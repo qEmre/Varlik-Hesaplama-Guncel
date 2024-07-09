@@ -1,0 +1,45 @@
+﻿@model List<hesaplanmisDegerler>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Varlık Tutarı</th>
+                <th>Önceki Aya Göre Varlık Artış</th>
+                <th>Varlık Değişim Oranı</th>
+                <th>Varlık Tarihi Dolar Kuru</th>
+                <th>Dolarizasyon Varlık Tutarı</th>
+                <th>Dolarizasyon Önceki Aya Göre Varlık Artış</th>
+                <th>Dolarizasyon Varlık Değişim Oranı</th>
+                <th>Dolarizasyon Etkisi Yüzde</th>
+                <th>ÜFE Endeks</th>
+                <th>Enflasyon Varlık Tutarı</th>
+                <th>Enflasyon Önceki Aya Göre Varlık Artış</th>
+                <th>Enflasyon Varlık Değişim Oranı</th>
+                <th>Enflasyon Etkisi Yüzde</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderBy(o => o.Tarih))
+            {
+                <tr>
+                    <td>@item.Tarih.ToString("MMMM yyyy")</td>
+                    <td><span style="position:relative;">₺&nbsp;</span>@string.Format("{0:#,##0.00}", item.varlikTutari)</td>
+                    <td>@(string.Format("{0:N2}%", item.oncekiAyaGoreVarlikArtis))</td>
+                    <td>@(string.Format("{0:N2}%", item.varlikDegisimOrani))</td>
+                    <td>@item.varlikTarihiDolarKuru</td>
+                    <td><span style="position:relative;">₺&nbsp;</span>@string.Format("{0:#,##0.00}", item.dolarizasyonVarlikTutari)</td>
+                    <td>@(string.Format("{0:N2}%", item.dolarizasyonOncekiAyaGoreVarlikArtis))</td>
+                    <td>@(string.Format("{0:N2}%", item.dolarizasyonVarlikDegisimOrani))</td>
+                    <td>@(string.Format("{0:N2}%", item.dolarizasyonEtkisiYüzde))</td>
+                    <td>@item.ufeEndeks</td>
+                    <td><span style="position:relative;">₺&nbsp;</span>@string.Format("{0:#,##0.00}", item.enflasyonVarliktutari)</td>
+                    <td>@(string.Format("{0:N2}%", item.enflasyonOncekiAyaGoreVarlikArtis))</td>
+                    <td>@(string.Format("{0:N2}%", item.enflasyonVarlikDegisimOrani))</td>
+                    <td>@(string.Format("{0:N2}%", item.enflasyonEtkisiYuzde))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

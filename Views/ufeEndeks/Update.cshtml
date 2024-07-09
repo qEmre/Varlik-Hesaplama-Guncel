@@ -1,0 +1,20 @@
+﻿@model ufeEndeks
+
+<div style="width: 350px; margin-left: 450px;">
+    <form method="post" asp-controller="ufeEndeks" asp-action="Update">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div>
+            <label for="Deger">Endeks Oranı:</label>
+            <input name="Deger" type="text" class="form-control" value="@Model.Deger" />
+        </div>
+        <div>
+            <label for="DolarKuru">Dolar Kuru:</label>
+            <input name="DolarKuru" type="text" class="form-control" value="@Model.DolarKuru" />
+        </div>
+        <div>
+            <label for="Tarih">Tarih:</label>
+            <input name="Tarih" type="month" class="form-control" value="@Model.Tarih.ToString("yyyy-MM")" />
+        </div>
+        <button type="submit" style="margin-top: 10px; background-color: darkorange;">Kaydet</button>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+﻿@model List<varlik>
+
+<form method="post" asp-controller="hesaplama" asp-action="Index"> 
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAllCheckbox" onclick="selectAll(this)"></th>
+                <th>#</th>
+                <th>Varlık Adı</th>
+                <th>Varlık Tutarı</th>
+                <th>Tarihi</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var varlik in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" name="varliklar" value="@varlik.Id"></td>
+                    <td>@varlik.Id</td>
+                    <td>@varlik.Name</td>
+                    <td><span style="position:relative;">₺&nbsp;</span>@varlik.Tutari</td>
+                    <td>@varlik.Tarihi.ToString("MMMM yyyy")</td>
+                    <td>
+                        <form method="get" asp-controller="varlik" asp-action="Update">
+                            <button name="id" value="@varlik.Id" type="submit" class="btn btn-success" style="width : 125px;">Güncelle</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" asp-controller="varlik" asp-action="Delete">
+                            <button name="id" value="@varlik.Id" type="submit" class="btn btn-danger" style="width : 125px;">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-success" style="width: 150px;">Hesapla</button>
+    </div>
+</div>
+</form>
+<script>
+    function selectAll(source) {
+        checkboxes = document.getElementsByName('varliklar');
+        for(var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = source.checked;
+        }
+    }
+</script>
